@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script src="js/site/theme-init.js"></script>
+    <title>kikiOS — PC Boost</title>
+    <meta
+      name="description"
+      content="kikiOS — точная настройка Windows и железа под минимальный input lag и стабильный фреймтайм."
+    />
+    <link rel="icon" href="assets/favicons/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&family=Nunito:ital,wght@0,800;1,800&display=swap"
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/gameboy.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/components/software.css" />
+    <link rel="stylesheet" href="css/components/folders.css" />
+  </head>
+  <body>
+    <main class="stage">
+      <div class="gameboy" id="gameboy">
+        <div class="top">
+          <i class="groove groove-l"></i>
+          <i class="groove groove-r"></i>
+        </div>
+
+        <button class="power" id="power" type="button" aria-label="Power">
+          <span class="power-nub"></span>
+          <span class="power-label"
+            ><span class="tri tri-l"></span>OFF&thinsp;•&thinsp;ON<span class="tri tri-r"></span
+          ></span>
+        </button>
+
+        <div class="lens">
+          <div class="lens-head">
+            <span class="stripe"></span>
+            <span class="lens-text">DOT MATRIX WITH STEREO SOUND</span>
+            <span class="stripe stripe-r"></span>
+          </div>
+          <div class="battery"><i class="led"></i><span>BATTERY</span></div>
+          <div class="lcd-window">
+            <canvas id="lcd" width="160" height="144" aria-label="Screen"></canvas>
+            <i class="lcd-shade"></i>
+          </div>
+        </div>
+
+        <div class="logo">
+          <span class="logo-n">Nintendo</span><span class="logo-gb">GAME BOY</span><span class="logo-tm">TM</span>
+        </div>
+
+        <div class="dpad-well"></div>
+        <i class="mark mark-up"></i>
+        <i class="mark mark-down"></i>
+        <i class="mark mark-left"></i>
+        <i class="mark mark-right"></i>
+        <div class="dpad" id="dpad" role="group" aria-label="D-pad">
+          <i class="dpad-h"></i>
+          <i class="dpad-v"></i>
+          <i class="dpad-c"></i>
+        </div>
+
+        <div class="ab-well"></div>
+        <div class="btn-round btn-b" data-btn="b" role="button" aria-label="B"></div>
+        <div class="btn-round btn-a" data-btn="a" role="button" aria-label="A"></div>
+        <span class="label label-b">B</span>
+        <span class="label label-a">A</span>
+
+        <div class="pill-well well-select">
+          <div class="pill" data-btn="select" role="button" aria-label="Select"></div>
+        </div>
+        <div class="pill-well well-start">
+          <div class="pill" data-btn="start" role="button" aria-label="Start"></div>
+        </div>
+        <span class="label label-pill label-select">SELECT</span>
+        <span class="label label-pill label-start">START</span>
+
+        <div class="speaker"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+        <div class="phones"><span>PHONES</span></div>
+        <i class="jack"></i>
+      </div>
+      <div class="floor-shadow"></div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll down"
+        ><span class="scroll-cue-line"></span
+        ><span class="scroll-cue-label" data-i18n="scrollCue">Scroll to explore</span
+        ><span class="scroll-cue-arrow" aria-hidden="true">↓</span></a
+      >
+    </main>
+
+    <section class="site-info" id="about">
+      <div class="site-wrap">
+        <div class="site-language-row">
+          <button
+            id="sw-open"
+            class="ref-button sw-trigger"
+            type="button"
+            data-sw-open
+            aria-haspopup="dialog"
+            aria-controls="sw-modal"
+          >
+            <svg viewBox="0 0 88 88" aria-hidden="true">
+              <path
+                d="M0 12.4 35.7 7.5v34.5H0zm40-5.6L87.3 0v41.6H40zM0 46h35.7v34.6L0 75.6zm40 .5h47.3V88L40 81.3z"
+              /></svg
+            ><span data-i18n="swButton">Software &amp; Windows</span></button
+          ><button id="theme-toggle" class="ref-button" type="button" aria-label="Switch to dark theme">DARK</button
+          ><button id="lang-toggle" class="ref-button" type="button" aria-label="Switch to Russian">RU</button>
+        </div>
+        <div class="site-intro">
+          <h1 data-i18n="heroTitle">Your PC is already capable of <em>more frames</em> than it shows.</h1>
+          <p class="site-lead" data-i18n="heroLead">
+            kikiOS — precise Windows and hardware tuning for minimal input lag and a stable frame time. No game
+            reinstalls, no magic — just the configuration most systems leave untouched.
+          </p>
+        </div>
+
+        <section class="site-toolset" data-aos="fade-right" aria-labelledby="toolset-title">
+          <div class="site-toolset-head">
+            <h2 id="toolset-title" data-i18n="includedTitle">What’s included</h2>
+            <p data-i18n="includedLead">
+              A focused pass through the system — from a clean OS to network and background processes.
+            </p>
+          </div>
+          <div class="site-toolset-list">
+            <article class="site-tool-item">
+              <a
+                class="site-tool-icon site-tool-link"
+                href="https://drive.google.com/file/d/1_SrFxim3o5u1JU2L8F32rRarpd4k6FkM/view?usp=sharing"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open related resource"
+                ><svg viewBox="0 0 448 512">
+                  <path
+                    d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                  /></svg
+              ></a>
+              <div>
+                <h3 data-i18n="cleanOsTitle">Clean OS</h3>
+                <p data-i18n="cleanOsText">
+                  Clean Windows 11 Pro (25H2, x64) install and baseline system optimization.
+                </p>
+              </div>
+            </article>
+            <article class="site-tool-item">
+              <a
+                class="site-tool-icon site-tool-link"
+                href="https://ru.wikipedia.org/wiki/%D0%A6%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9_%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D1%80"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open related resource"
+                ><svg viewBox="0 0 448 512">
+                  <path
+                    d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                  /></svg
+              ></a>
+              <div>
+                <h3 data-i18n="cpuTitle">CPU & power</h3>
+                <p data-i18n="cpuText">
+                  A custom power plan and process affinity for the CPU’s highest-performance cores.
+                </p>
+              </div>
+            </article>
+            <article class="site-tool-item">
+              <a
+                class="site-tool-icon site-tool-link"
+                href="https://ru.wikipedia.org/wiki/Input_lag"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open related resource"
+                ><svg viewBox="0 0 448 512">
+                  <path
+                    d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                  /></svg
+              ></a>
+              <div>
+                <h3 data-i18n="inputTitle">Input lag</h3>
+                <p data-i18n="inputText">
+                  Fine-tune polling and device latency for the mouse, keyboard and monitor — where milliseconds matter.
+                </p>
+              </div>
+            </article>
+            <article class="site-tool-item">
+              <a
+                class="site-tool-icon site-tool-link"
+                href="https://en.wikipedia.org/wiki/Network"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open related resource"
+                ><svg viewBox="0 0 448 512">
+                  <path
+                    d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                  /></svg
+              ></a>
+              <div>
+                <h3 data-i18n="networkTitle">Network</h3>
+                <p data-i18n="networkText">
+                  Configure the network adapter for stable ping and fewer packet losses in busy matches.
+                </p>
+              </div>
+            </article>
+            <article class="site-tool-item">
+              <a
+                class="site-tool-icon site-tool-link"
+                href="https://www.microsoft.com/en-us/download"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open related resource"
+                ><svg viewBox="0 0 448 512">
+                  <path
+                    d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-9.3-25-.4-34.3z"
+                  /></svg
+              ></a>
+              <div>
+                <h3 data-i18n="driversTitle">Drivers & software</h3>
+                <p data-i18n="driversText">
+                  Clean Nvidia / AMD driver installation and background software priority tuning.
+                </p>
+              </div>
+            </article>
+            <article class="site-tool-item">
+              <a
+                class="site-tool-icon site-tool-link"
+                href="https://ru.wikipedia.org/wiki/Advanced_SystemCare"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open related resource"
+                ><svg viewBox="0 0 448 512">
+                  <path
+                    d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"
+                  /></svg
+              ></a>
+              <div>
+                <h3 data-i18n="cleanupTitle">System cleanup</h3>
+                <p data-i18n="cleanupText">
+                  Disable telemetry, unused services and extra hardware devices that waste resources in the background.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="x-focus-card" data-aos="fade-left" aria-labelledby="x-focus-title">
+          <div class="x-focus-art" aria-hidden="true"></div>
+          <span class="x-focus-kicker" data-i18n="xKicker">X / Development notes</span>
+          <div class="x-focus-grid">
+            <h2 id="x-focus-title" data-i18n="xTitle">Tweaks.<br />Updates.<br /><strong>Fresh ideas.</strong></h2>
+            <div class="x-focus-copy">
+              <p data-i18n="xText">
+                On X I share short posts about tweaks, tests, new features and changes across the project.
+              </p>
+              <a class="ref-button x-focus-button" href="https://x.com/feduk1283911" target="_blank" rel="noopener"
+                ><img src="assets/icons/social/x.svg" alt="" /><span data-i18n="xButton">Follow on X</span></a
+              >
+            </div>
+          </div>
+        </section>
+
+        <div class="site-wrap site-community">
+          <article class="community-card" data-aos="fade-right">
+            <div class="community-kicker">GitHub</div>
+            <h2 data-i18n="githubTitle">Like what you see?</h2>
+            <p data-i18n="githubText">
+              If you like the setup and want to support the project, you can star it on GitHub.
+            </p>
+            <a class="ref-button community-button" href="https://github.com/f7707111-rgb" target="_blank" rel="noopener"
+              ><img src="assets/icons/social/github.svg" alt="" /><span data-i18n="githubButton">GitHub</span></a
+            >
+          </article>
+          <article class="community-card" data-aos="fade-left">
+            <div class="community-kicker">Community</div>
+            <h2 data-i18n="communityTitle">Stay connected with kikiOS.</h2>
+            <p data-i18n="communityText">Join my Discord or visit my site for more system tools and updates.</p>
+            <div class="community-links">
+              <a class="community-link" href="https://discord.gg/5Vxck3Bq7V" target="_blank" rel="noopener"
+                ><span data-i18n="discordLink">Join Discord</span><span>›</span></a
+              ><a
+                class="community-link"
+                href="https://f7707111-rgb.github.io/KikiTweaks/"
+                target="_blank"
+                rel="noopener"
+                ><span data-i18n="siteLink">Visit my site</span><span>›</span></a
+              >
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <section class="site-wrap folders" id="about-kiki" aria-labelledby="about-kiki-title">
+        <header class="folders-head" data-aos="fade-right">
+          <h2 id="about-kiki-title" data-i18n="aboutTitle">About me &amp; <em>kikiOS</em></h2>
+          <p data-i18n="aboutLead"></p>
+        </header>
+        <div class="folders-grid" data-folders data-aos="fade-up"></div>
+      </section>
+      <div class="site-wrap site-footer-inner">
+        <div><strong>kikiOS</strong><small>low latency / high clarity</small></div>
+        <nav class="site-icons" aria-label="Links">
+          <a href="https://discord.gg/5Vxck3Bq7V" target="_blank" rel="noopener" aria-label="Discord"
+            ><img src="assets/icons/social/discord.svg" alt=""
+          /></a>
+          <a href="https://www.youtube.com/@feduk1-c6z" target="_blank" rel="noopener" aria-label="YouTube"
+            ><img src="assets/icons/social/youtube.svg" alt=""
+          /></a>
+          <a href="https://x.com/feduk1283911" target="_blank" rel="noopener" aria-label="X"
+            ><img src="assets/icons/social/x.svg" alt=""
+          /></a>
+        </nav>
+      </div>
+    </footer>
+
+    <div class="sw-modal" id="sw-modal" role="dialog" aria-modal="true" aria-labelledby="sw-title" hidden>
+      <div class="sw-backdrop" data-sw-close></div>
+      <div class="sw-window" role="document">
+        <div class="sw-titlebar">
+          <span class="sw-path"><b>kikiOS</b><i>/</i>software</span>
+          <span class="sw-hint" aria-hidden="true">ESC</span>
+          <button class="sw-close" type="button" data-sw-close aria-label="Close">
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9m0-9l-9 9" /></svg>
+          </button>
+        </div>
+        <div class="sw-body">
+          <header class="sw-head">
+            <span class="sw-kicker" data-i18n="swKicker">Downloads / by kiki</span>
+            <h2 id="sw-title" data-i18n="swTitle">Software &amp; Windows</h2>
+            <p data-i18n="swLead">Clean Windows images and the apps I use — pick a build and a mirror.</p>
+          </header>
+          <section class="sw-section">
+            <h3><span data-i18n="swIsoTitle">Windows ISO</span><em data-sw-count="windows"></em></h3>
+            <ul class="sw-list" data-sw-list="windows"></ul>
+          </section>
+          <section class="sw-section">
+            <h3><span data-i18n="swAppsTitle">Software</span><em data-sw-count="apps"></em></h3>
+            <ul class="sw-list" data-sw-list="apps"></ul>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- data -->
+    <script src="js/data/translations.js"></script>
+    <script src="js/data/software.js"></script>
+    <script src="js/data/sections.js"></script>
+    <!-- site -->
+    <script src="js/site/software.js"></script>
+    <script src="js/site/folders.js"></script>
+    <script src="js/site/settings.js"></script>
+    <script src="js/site/reveal.js"></script>
+    <!-- game boy -->
+    <script src="js/gameboy/font.js"></script>
+    <script src="js/gameboy/lcd.js"></script>
+    <script src="js/gameboy/sound.js"></script>
+    <script src="js/gameboy/input.js"></script>
+    <script src="js/gameboy/games-loader.js"></script>
+  </body>
+</html>
